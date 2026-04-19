@@ -9,7 +9,7 @@ A comprehensive Machine Learning pipeline designed to detect six distinct emotio
 The repository follows a clean, production-oriented structure to ensure scalability and maintainability.
 
 ```bash
-.
+NLP Based Emotion Detection System
 ├── app/
 │   └── main.py              # Streamlit web application
 ├── src/                     # Core logic package
