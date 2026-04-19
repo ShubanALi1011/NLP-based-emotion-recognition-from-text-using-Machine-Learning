@@ -33,7 +33,7 @@ st.markdown("""
         text-align: center;
         padding: 1.5rem;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 10px;
+        border-radius: 20px;
         margin-bottom: 2rem;
     }
     .main-header h1 {
@@ -42,7 +42,7 @@ st.markdown("""
         font-size: 2rem;
     }
     .main-header p {
-        color: #e0e0e0;
+        color: #FFFFFF;
         margin: 0.5rem 0 0 0;
     }
     
@@ -138,8 +138,7 @@ st.markdown("""
 st.markdown("""
 <div class="main-header">
     <h1>🎭 Emotion Detection System</h1>
-    <p>Advanced NLP-based emotion recognition from text using Machine Learning</p>
-</div>
+    <p style="color: #FFFFFF;">Advanced NLP-based emotion recognition from text using machine learning.</p></div>
 """, unsafe_allow_html=True)
 
 # LOAD MODELS
