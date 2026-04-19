@@ -1,4 +1,3 @@
-```markdown
 # NLP-based Emotion Recognition from Text using Machine Learning
 
 A comprehensive Machine Learning pipeline designed to detect six distinct emotions from text based on linguistic features. This project features a modular architecture, a high-performance prediction engine, and a user-friendly Streamlit web interface.
