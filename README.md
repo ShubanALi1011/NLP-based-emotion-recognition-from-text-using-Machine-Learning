@@ -133,4 +133,3 @@ The models classify text into one of six emotion categories based on Bag-of-Word
 -----
 
 *Ready to detect emotions!*
-```
