@@ -26,7 +26,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# CUSTOM CSS
+# CUSTOM CSS - Dark Mode Compatible
 st.markdown("""
 <style>
     .main-header {
@@ -90,19 +90,46 @@ st.markdown("""
         margin-top: 2rem;
     }
     
+    /* Dark mode compatible example card */
     .example-card {
-        background: #f8f9fa;
+        background-color: var(--secondary-background-color);
         padding: 10px;
         border-radius: 8px;
         margin: 5px 0;
+        border: 1px solid var(--border-color);
+        color: var(--text-color);
     }
     
     .info-box {
-        background: #e8f4f8;
+        background-color: var(--secondary-background-color);
         padding: 10px;
         border-radius: 8px;
         margin: 10px 0;
         font-size: 13px;
+        border: 1px solid var(--border-color);
+        color: var(--text-color);
+    }
+    
+    /* Make text in expander and dataframe visible */
+    .stExpander, .stDataFrame, .stMarkdown {
+        color: var(--text-color);
+    }
+    
+    /* Fix for st.write and st.markdown text */
+    .stMarkdown p, .stMarkdown div {
+        color: var(--text-color);
+    }
+    
+    /* Fix for dataframe text */
+    .dataframe, .dataframe td, .dataframe th {
+        color: var(--text-color) !important;
+        background-color: var(--background-color) !important;
+    }
+    
+    /* Fix for success/warning/info boxes */
+    .stAlert {
+        background-color: var(--secondary-background-color);
+        color: var(--text-color);
     }
 </style>
 """, unsafe_allow_html=True)
