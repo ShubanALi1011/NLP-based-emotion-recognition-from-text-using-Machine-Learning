@@ -1,136 +1,137 @@
-Bhai bilkul! **Professional** README deta hoon - no extra emojis, clean and simple.
-
----
-
-## 📄 `README.md` (Professional)
-
 ```markdown
 # NLP-based Emotion Recognition from Text using Machine Learning
 
-An advanced emotion detection system that identifies emotions from text using Machine Learning algorithms. The system processes natural language text and classifies it into six distinct emotion categories with high accuracy.
+A comprehensive Machine Learning pipeline designed to detect six distinct emotions from text based on linguistic features. This project features a modular architecture, a high-performance prediction engine, and a user-friendly Streamlit web interface.
 
-## Key Features
+-----
 
-- Single text analysis with real-time prediction
-- Batch processing support for CSV, TXT, PDF, and DOCX files
-- Multiple ML models selection (Logistic Regression, Linear SVM, XGBoost)
-- Confidence score visualization with bar charts
-- Export batch results as CSV files
+## Project Architecture
 
-## Model Performance
+The repository follows a clean, production-oriented structure to ensure scalability and maintainability.
 
-| Model | Accuracy | F1-Score |
-|-------|----------|----------|
-| Logistic Regression | 89.85% | 86.05% |
-| XGBoost | 89.70% | 87.28% |
-| Linear SVM | 89.35% | 85.39% |
-
-## Technology Stack
-
-| Category | Technologies |
-|----------|--------------|
-| Frontend | Streamlit |
-| Machine Learning | Scikit-learn, XGBoost |
-| NLP | NLTK, Bag-of-Words |
-| Data Processing | Pandas, NumPy |
-| Visualization | Matplotlib |
-| File Processing | PyPDF2, python-docx |
-
-## Project Structure
-
-```
-NLP Based Emotion Detection System/
-│
+```bash
+.
 ├── app/
-│   └── main.py                 # Streamlit application
-│
-├── src/
-│   ├── config.py               # Configuration settings
-│   ├── preprocess.py           # Text cleaning functions
-│   ├── file_processor.py       # File handling utilities
-│   ├── model_loader.py         # Model loading with caching
-│   ├── predictor.py            # Emotion prediction logic
-│   ├── visualizer.py           # Chart generation
-│   └── __init__.py            # Package exports
-│
-├── models/
-│   ├── encoder.joblib
-│   ├── vectorizer_BoW.joblib
-│   ├── LogisticRegression_model.joblib
-│   ├── LinearSVC_model.joblib
-│   └── XGBoost_model.joblib
-│
-├── requirements.txt
+│   └── main.py              # Streamlit web application
+├── src/                     # Core logic package
+│   ├── config.py            # Paths and global settings
+│   ├── preprocess.py        # Text cleaning and normalization
+│   ├── file_processor.py    # CSV, TXT, PDF, DOCX handlers
+│   ├── model_loader.py      # Model loading with caching
+│   ├── predictor.py         # Emotion prediction logic
+│   ├── visualizer.py        # Confidence charts and colors
+│   └── __init__.py          # Package exports
+├── models/                  # Serialized models and vectorizer
+├── notebooks/               # EDA and Model Training workflows
+├── data/                    # Raw datasets (local only)
+├── requirements.txt         # Dependency manifest
 └── README.md
 ```
 
-## Installation
+-----
 
-Clone the repository and install dependencies:
+## Getting Started
+
+### 1. Installation
+
+Clone the repository and set up a virtual environment:
 
 ```bash
-git clone https://github.com/yourusername/emotion-detection-nlp.git
+git clone https://github.com/your-repo/emotion-detection-nlp.git
 cd emotion-detection-nlp
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-Download NLTK data (first time only):
+### 2. Download NLTK Data
 
 ```bash
 python -c "import nltk; nltk.download('stopwords'); nltk.download('punkt')"
 ```
 
-Run the application:
+### 3. Launch the Web App
 
 ```bash
 streamlit run app/main.py
 ```
 
-## Usage Guide
+### 4. Batch Processing
 
-**Single Text Analysis**
-- Navigate to the Single Text tab
-- Enter your text in the input area
-- Click Analyze Emotion to get prediction
-- View confidence distribution chart
+Upload CSV, TXT, PDF, or DOCX files through the web interface for bulk analysis.
 
-**Batch Processing**
-- Navigate to the Batch Processing tab
-- Upload CSV, TXT, PDF, or DOCX file
-- CSV files must contain a 'text' column
-- TXT files: each line as a separate sentence
-- Click Start Analysis and download results
+**CSV Format Required:**
+```csv
+text
+I am very happy today
+This makes me angry
+I love this weather
+```
 
-## Dataset
+**TXT Format:** Each line treated as a separate sentence
 
-- Total samples: 16,000+ text sentences
-- Emotion classes: anger, fear, joy, love, sadness, surprise
-- Feature extraction: Bag-of-Words with 7,000 features
-- Train-test split: 75% - 25%
+**PDF/DOCX:** Text automatically extracted and processed
 
-## Methodology
+-----
 
-**Text Preprocessing**
+## Model Performance
+
+We evaluated three primary algorithms. The **XGBoost** model is recommended due to its superior F1-Score across all emotion classes.
+
+| Model | Accuracy | F1-Macro | Balanced Acc |
+| --- | --- | --- | --- |
+| XGBoost | 89.7% | 87.3% | 87.7% |
+| Logistic Regression | 89.8% | 86.1% | 84.9% |
+| Linear SVM | 89.4% | 85.4% | 85.2% |
+
+-----
+
+## Dataset Insights
+
+The models classify text into one of six emotion categories based on Bag-of-Words features extracted from 16,000+ sentences.
+
+### Emotion Classes
+
+| # | Emotion |
+| --- | --- |
+| 1 | Anger |
+| 2 | Fear |
+| 3 | Joy |
+| 4 | Love |
+| 5 | Sadness |
+| 6 | Surprise |
+
+### Feature Extraction
+
+**Bag-of-Words (BoW) Configuration:**
+- Max features: 7,000
+- N-gram range: (1, 2)
+- Min document frequency: 3
+- Max document frequency: 0.7
+
+**Preprocessing Pipeline:**
 - Lowercase conversion
 - Punctuation removal
 - Number removal
 - Extra space normalization
 
-**Feature Extraction**
-- Bag-of-Words vectorization
-- Unigram and bigram features
-- Max features limit of 7,000
+-----
 
-**Model Training**
-- 5-fold cross validation
-- Hyperparameter tuning with RandomizedSearchCV
-- Evaluation metrics: Accuracy, Balanced Accuracy, F1-Score
+## Outputs
 
-## Author
+- Predictions: Exported as CSV from batch processing
+- Visualizations: Confidence distribution bar charts
+- Logs: Streamlit console output for debugging
 
-Shuban Ali
+-----
 
-## License
+## License & Attribution
 
-Educational Purpose Only
+**Author:** Shuban Ali
+
+**License:** Distributed for educational use only.
+
+-----
+
+*Ready to detect emotions!*
 ```
